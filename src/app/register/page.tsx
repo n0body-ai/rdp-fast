@@ -29,12 +29,12 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-950 text-white">
-      <div className="w-full max-w-md p-8 bg-gray-900 rounded-lg shadow-xl border border-gray-800">
-        <h1 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-          RDPFast
-        </h1>
-        <h2 className="text-xl font-semibold mb-6 text-center text-gray-300">Create Account</h2>
+    <div className="flex min-h-screen items-center justify-center bg-[#0f172a] text-white">
+      <div className="w-full max-w-md p-8 bg-[#1e293b] rounded-2xl shadow-xl border border-gray-700">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-600 rounded-lg text-white font-bold text-xl mb-4">R</div>
+          <h1 className="text-2xl font-bold text-white">Create Account</h1>
+        </div>
         
         {error && (
           <div className="bg-red-900/50 border border-red-500 text-red-200 p-3 rounded mb-4 text-sm">

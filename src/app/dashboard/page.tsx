@@ -175,34 +175,54 @@ export default function DashboardPage() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
           <h1 className="text-2xl font-bold">Your Instances</h1>
-          <div className="flex gap-2">
-            <select 
-              value={selectedPlan}
-              onChange={(e) => setSelectedPlan(e.target.value)}
-              className="bg-gray-800 border border-gray-700 text-white rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="vc2-1c-2gb">Standard (2GB RAM) - $15/mo</option>
-              <option value="vc2-2c-4gb">Pro (4GB RAM) - $25/mo</option>
-              <option value="vc2-4c-8gb">Ultra (8GB RAM) - $50/mo</option>
-            </select>
+        </div>
+
+        {/* Deployment Section (Always visible for easy access) */}
+        <div className="bg-[#1e293b] p-6 rounded-2xl border border-gray-700 mb-10">
+          <h2 className="text-lg font-semibold mb-4 text-white">Deploy New Server</h2>
+          <div className="grid md:grid-cols-3 gap-4 mb-6">
+            {/* Selection Cards */}
+            {[
+              { id: "vc2-1c-2gb", name: "Starter", specs: "1 CPU • 2GB RAM", price: "$14.99" },
+              { id: "vc2-2c-4gb", name: "Pro", specs: "2 CPU • 4GB RAM", price: "$24.99" },
+              { id: "vc2-4c-8gb", name: "Business", specs: "4 CPU • 8GB RAM", price: "$49.99" },
+            ].map((plan) => (
+              <div 
+                key={plan.id}
+                onClick={() => setSelectedPlan(plan.id)}
+                className={`cursor-pointer border rounded-xl p-4 flex justify-between items-center transition-all ${
+                  selectedPlan === plan.id 
+                    ? "border-blue-500 bg-blue-900/20 ring-1 ring-blue-500" 
+                    : "border-gray-700 bg-gray-800 hover:border-gray-500"
+                }`}
+              >
+                <div>
+                  <div className="font-bold text-white">{plan.name}</div>
+                  <div className="text-sm text-gray-400">{plan.specs}</div>
+                </div>
+                <div className="font-semibold text-blue-400">{plan.price}</div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="flex justify-end">
             <button 
               onClick={handleDeploy}
               disabled={deploying}
-              className={`px-4 py-2 rounded font-medium shadow-lg transition-all flex items-center gap-2 ${
+              className={`px-6 py-3 rounded-lg font-bold shadow-lg transition-all flex items-center gap-2 ${
                 deploying 
                   ? "bg-blue-800 cursor-wait text-gray-300" 
-                  : "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-900/20"
+                  : "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-900/20 transform hover:scale-105"
               }`}
             >
               {deploying ? (
                 <>
-                  <span className="animate-spin h-4 w-4 border-2 border-gray-300 border-t-transparent rounded-full"></span>
-                  Deploying...
+                  <span className="animate-spin h-5 w-5 border-2 border-gray-300 border-t-transparent rounded-full"></span>
+                  Provisioning Server...
                 </>
               ) : (
-                "+ Deploy"
+                "Deploy Server Now"
               )}
             </button>
           </div>
