@@ -4,9 +4,7 @@ export const fetchCache = "force-no-store";
 export const runtime = "nodejs"; 
 
 import NextAuth from "next-auth";
-
-// Force dynamic rendering (skip static analysis)
-export const dynamic = 'force-dynamic';
+import { authOptions } from "@/lib/auth";
 
 const handler = NextAuth(authOptions);
 
