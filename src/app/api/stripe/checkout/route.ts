@@ -4,7 +4,7 @@ import { stripe } from "@/lib/stripe";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-const STRIPE_PRICE_ID = "price_1Q..."; // TODO: REPLACE WITH REAL PRICE ID
+const STRIPE_PRICE_ID = "price_1Sx6QaFjUSRREzCN2qREbJHw";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
