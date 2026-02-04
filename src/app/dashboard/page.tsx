@@ -175,8 +175,7 @@ export default function DashboardPage() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-bold">Your Instances</h1>
-        </div>
+        <h1 className="text-2xl font-bold mb-8">Your Instances</h1>
 
         {/* Deployment Section (Always visible for easy access) */}
         <div className="bg-[#1e293b] p-6 rounded-2xl border border-gray-700 mb-10">
