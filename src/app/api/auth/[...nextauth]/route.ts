@@ -1,5 +1,8 @@
-export const runtime = "nodejs"
-import { authOptions } from "@/lib/auth";
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
+export const runtime = "nodejs"; 
+
 import NextAuth from "next-auth";
 
 // Force dynamic rendering (skip static analysis)
