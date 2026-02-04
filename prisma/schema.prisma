@@ -1,0 +1,43 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  role          String    @default("USER")
+  createdAt     DateTime  @default(now())
+  
+  instances     Instance[]
+  subscriptions Subscription[]
+}
+
+model Instance {
+  id            String    @id @default(cuid())
+  userId        String
+  vultrId       String?
+  ipAddress     String?
+  username      String    @default("Administrator")
+  password      String
+  status        String    @default("PENDING")
+  region        String
+  plan          String
+  createdAt     DateTime  @default(now())
+  expiresAt     DateTime?
+  user          User      @relation(fields: [userId], references: [id])
+}
+
+model Subscription {
+  id               String   @id @default(cuid())
+  userId           String
+  stripeCustomerId String
+  stripeSubId      String   @unique
+  status           String
+  currentPeriodEnd DateTime
+  user             User     @relation(fields: [userId], references: [id])
+}
